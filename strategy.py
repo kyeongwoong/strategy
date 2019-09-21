@@ -5,10 +5,12 @@ Created on Wed Jul 17 12:57:07 2019
 @author: samsung
 """
 
-
 import numpy as np
 from scipy.stats import norm
 import matplotlib.pyplot as plt
+
+
+fig, ax = plt.subplots(1, 1)
 
 # A사 입찰가 평균과 표준편자 
 A_mean = 0.8
@@ -32,19 +34,11 @@ profit = pwin*norm.pdf((x-estim)/estd)
 max_profit=np.max(profit)
 max_index = np.where(max_profit==profit)
 
-print(max_profit,x[max_index],pwin[max_index])
-
-fig = plt.figure()
-
-ax = fig.subplots(1, 1)
+print(max_profit, x[max_index],pwin[max_index])
 
 ax.plot(x, pwin,
         'r-', lw=5, alpha=0.6, label='Winning Probabilty')
-
 #ax.plot(x, rel,
 #        'b-', lw=5, alpha=0.6, label='Reliability')
-
 ax.plot(x, profit,
         'g-', lw=5, alpha=0.6, label='Profit')
-
-plt.show()
